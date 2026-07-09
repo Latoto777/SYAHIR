@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LA LATOTO - Custom Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght=600;700&family=Poppins:wght=300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Reset Dasar */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: url("https://files.catbox.moe/3v104v.png") center/cover no-repeat fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            color: #d1a12c;
+        }
+
+        /* Wrapper Utama */
+        .main-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* Container Utama Kartu */
+        .card-container {
+            width: 600px;
+            height: 600px;
+            background: 
+                linear-gradient(rgba(10, 8, 3, 0.301), rgba(0, 0, 0, 0.0)),
+                url("https://files.catbox.moe/euifpj.png") center/cover no-repeat;
+            border: 7px solid #816d47fd;
+            box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.233), 0 15px 35px rgba(0,0,0,0.8), 0 0 15px rgba(209, 161, 44, 0.3);
+            position: relative;
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+
+        /* --- HEADER --- */
+        .header {
+            text-align: center;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* BAGIAN LOGO YANG DIPERBAIKI */
+        .logo-image {
+            max-width: 220px;
+            height: auto;
+            margin-bottom: 5px;
+            /* Menambah kecerahan, kontras, dan ketajaman */
+            filter: brightness(1.4) contrast(1.2) drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
+            image-rendering: -webkit-optimize-contrast;
+        }
+
+        .date {
+            font-size: 0.95rem;
+            font-weight: 800;
+            letter-spacing: 5px;
+            margin-top: 6px;
+            text-transform: uppercase;
+            background: linear-gradient(to bottom, #ffffff 0%, #fff3b3 40%, #dabf2b 80%, #d1a12c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.5)) drop-shadow(0 1px 3px rgba(0, 0, 0, 0.9));
+        }
+
+        .pasaran-badge-container {
+            background: transparent;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 5px;
+            margin-bottom: 2px;
+            width: 100%;
+            height: 75px;
+        }
+
+        .pasaran-logo {
+            max-height: 70px;
+            max-width: 240px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.6));
+        }
+
+        .sub-badge {
+            font-size: 0.6rem;
+            letter-spacing: 2.5px;
+            color: #e5c158;
+            margin-top: 0px;
+            font-weight: 600;
+        }
+
+        /* --- CONTENT --- */
+        .content-container {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+            margin-top: 5px;
+            z-index: 2;
+        }
+
+        .content-column {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .column-left { width: 25%; }
+        .column-center { width: 50%; }
+        .column-right { width: 25%; }
+
+        .compass-wrapper {
+            position: relative;
+            width: 110px;
+            height: 110px;
+            margin: 0 auto;
+        }
+
+        .wind-rose-image {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: contain;
+        }
+
+        .compass-number {
+            position: absolute;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #fff3b3;
+            text-shadow: 0 0 6px rgba(0, 0, 0, 0.9);
+        }
+
+        .cn-top { top: -20px; left: 50%; transform: translateX(-50%); }
+        .cn-bottom { bottom: -25px; left: 50%; transform: translateX(-50%); }
+        .cn-left { left: -16px; top: 50%; transform: translateY(-50%); } 
+        .cn-right { right: -16px; top: 50%; transform: translateY(-50%); }
+
+        .dragon-vector-small {
+            width: 100px;
+            height: 50px;
+            margin: 30px auto 0 auto;
+            opacity: 0.9;
+            object-fit: contain;
+            display: block;
+        }
+
+       .shio-wrapper{
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            justify-content:center;
+            margin-top:1px;
+            margin-bottom:-10px;
+            width:100%;
+        }
+
+        .section-title-gold{
+            font-size:0.9rem;
+            color:#f0e589;
+            letter-spacing:5px;
+            font-weight:700;
+            margin:0;
+            text-align:center;
+        }
+
+        .main-number{
+            font-size:3.2rem;
+            font-weight:700;
+            line-height:-1;
+            margin-top:-1px;
+            margin-bottom:0;
+            letter-spacing:4px;
+            text-align:center;
+            background:linear-gradient(to bottom,#504c1c 0%,#fff3b3 30%,#a3985a 70%,#b8860b 100%);
+            -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent;
+            filter:drop-shadow(0 0 8px rgba(0, 0, 0, 0.6))
+                   drop-shadow(0 2px 4px rgba(0,0,0,.8));
+        }
+
+        .shio-logo-display {
+            width: 100%;
+            height: 190px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            background: transparent;
+        }
+
+        .shio-logo-img {
+            width: 195px;
+            height: 195px;
+            object-fit: contain;
+            filter: brightness(1.1) contrast(1.1);
+            image-rendering: -webkit-optimize-contrast;
+        }
+
+        .shio-name{
+            font-family:'Cinzel',serif;
+            font-size:1.3rem;
+            color:#ecdb79;
+            letter-spacing:4px;
+            font-weight:700;
+            text-transform:uppercase;
+            text-align:center;
+            margin-top:2px;
+            margin-bottom:-12px;
+        }
+
+        .bbfs-box {
+            margin-bottom: 15px;
+        }
+
+        .label-gold {
+            font-size: 0.9rem;
+            color: #cfbd57f3;
+            letter-spacing: 3px;
+            font-weight: 700;
+        }
+
+        .gold-line {
+            border: 0;
+            border-top: 1px solid #b8860b;
+            margin: 6px auto;
+            width: 85%;
+        }
+
+        .numbers-gold {
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: #fff3b3;
+        }
+
+        .numbers-dash-gold {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #fff3b3;
+            margin-top: 6px;
+            letter-spacing: 1px;
+        }
+
+        .footer{
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            justify-content:center;
+            text-align:center;
+            width:100%;
+            margin-top:15px;
+            margin-bottom:0;
+        }
+
+        .poem{
+            width:100%;
+            text-align:center;
+            font-size:.75rem;
+            font-style:italic;
+            font-weight:700;
+            color:#e0e4e8;
+            line-height:1.55;
+            letter-spacing:.8px;
+            text-shadow:1px 1px 3px rgba(0,0,0,.9);
+        }
+
+        /* Container Tombol */
+        .button-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        /* --- ANIMASI CYBER GLOW BERGERAK --- */
+        @keyframes cyber-glow {
+            0% { box-shadow: 0 0 5px #000000, 0 0 10px #050505, inset 0 0 5px rgba(255,215,0,0.2); }
+            50% { box-shadow: 0 0 20px #000000, 0 0 35px #000000, inset 0 0 10px rgba(255,215,0,0.5); }
+            100% { box-shadow: 0 0 5px #000000, 0 0 10px #000000, inset 0 0 5px rgba(32, 32, 28, 0.2); }
+        }
+
+        .btn-acak {
+            background: linear-gradient(to bottom, #000000 0%, #000000 50%, #030301 100%);
+            border: 2px solid #575235;
+            color: #cccccc;
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 12px 35px;
+            border-radius: 6px;
+            cursor: pointer;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            /* Efek Berlampu Bergerak Otomatis */
+            animation: cyber-glow 2s infinite ease-in-out;
+        }
+
+        /* Efek Saat Ditekan (Klik) Bergerak Warnanya */
+        .btn-acak:active {
+            transform: scale(0.95);
+            background: linear-gradient(to bottom, #000000, #ffd700, #ffae00);
+            box-shadow: 0 0 50px #ffae00, 0 0 100px #ffd700;
+            color: #000;
+        }
+
+        .btn-acak:hover {
+            filter: brightness(1.2);
+            letter-spacing: 2.5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-wrapper">
+        <div class="card-container" id="main-card">
+            <header class="header">
+                <img src="https://files.catbox.moe/mnelfc.webp" alt="LATOTO Logo" class="logo-image">
+                <p class="date" id="live-date">09 JULI 2026</p>
+                <div class="pasaran-badge-container">
+                    <img src="https://cdn.areabermain.club/assets/cdn/az4/2024/08/11/20240811/8889f1c5fc738b5148145100c08a0ebc/439-4390693-magnum-pengeluaran-magnum-4d-hari-clipart-removebg-preview.png" alt="Pasaran Logo" class="pasaran-logo" id="pasaran-img">
+                </div>
+                <p class="sub-badge"></p>
+            </header>
+
+            <div class="content-container">
+                <div class="content-column column-left">
+                    <div class="compass-wrapper">
+                        <span class="compass-number cn-top" id="num-top">2</span>
+                        <span class="compass-number cn-left" id="num-left">8</span>
+                        <span class="compass-number cn-right" id="num-right">6</span>
+                        <span class="compass-number cn-bottom" id="num-bottom">5</span>
+                        <img src="https://files.catbox.moe/fr0tvz.png" alt="Arah Angin" class="wind-rose-image">
+                    </div>
+                    <img id="shio-head-small" src="https://files.catbox.moe/atmcsu.png" alt="Kepala Shio" class="dragon-vector-small">
+                </div>
+
+                <div class="content-column column-center">
+                    <div class="shio-wrapper">
+                        <h3 class="section-title-gold">ANGKA SHIO</h3>
+                        <h2 class="main-number" id="shio-num">39</h2>
+                    </div>
+                    
+                    <div class="shio-logo-display">
+                        <img id="shio-logo-main" src="https://files.catbox.moe/b76mos.png" alt="Logo Shio" class="shio-logo-img">
+                    </div>
+
+                    <h2 class="shio-name" id="shio-text">SHIO NAGA</h2>
+                </div>
+
+                <div class="content-column column-right">
+                    <div class="bbfs-box">
+                        <h3 class="label-gold">BBFS</h3>
+                        <hr class="gold-line">
+                        <p class="numbers-gold" id="bbfs-num">46758120</p>
+                        <hr class="gold-line">
+                    </div>
+                    <div class="angka-main-box">
+                        <h3 class="label-gold">ANGKA MAIN</h3>
+                        <p class="numbers-dash-gold" id="main-num">2 - 0 - 1 - 4 - 6</p>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer" id="poem-container">
+                <p class="poem">Naga perkasa terbang ke awan</p>
+                <p class="poem">Membawa takdir di ujung cakar</p>
+                <p class="poem">Janganlah ragu wahai kawan</p>
+                <p class="poem">Angka mainmu siap berkibar</p>
+            </footer>
+        </div>
+
+        <div class="button-group">
+            <button class="btn-acak" onclick="acakAngka()">𝐔𝐁𝐀𝐇 𝐒𝐘𝐀𝐇𝐈𝐑</button>
+            <button class="btn-acak" onclick="acakBackground()">𝐔𝐁𝐀𝐇 𝐁𝐈𝐍𝐆𝐊𝐀𝐈</button>
+        </div>
+    </div>
+
+    <script>
+        // SCRIPT TETAP SAMA TANPA PERUBAHAN
+        const daftarLogos = [
+            "https://cdn.areabermain.club/assets/cdn/az5/2026/06/05/20260605/9ca8d985ec072becd1750837393f00bf/bangkok.png",
+            "https://cdn.areabermain.club/assets/cdn/az5/2026/06/05/20260605/00298fb352544dedc3291605bd0b07c1/brunei.png",
+            "https://cdn.areabermain.club/assets/cdn/az4/2024/08/11/20240811/7c3b7b0affd7880d2dddf918ba2ac258/calottlogo.png",
+            "https://cdn.areabermain.club/assets/cdn/az4/2024/08/11/20240811/07da64b7b63e905cf7e3adde14e57424/sgp.png",
+            "https://cdn.areabermain.club/assets/cdn/az5/2026/06/05/20260605/893a7e2fa9eddd9eec50dd20c1d3e3fc/poipey.png",
+            "https://chelseapools.co.uk/assets/img/chelseaPools_logo.png",
+            "https://cdn.areabermain.club/assets/cdn/az5/2026/05/31/20260531/3db926cb940533b84444c036dc088176/hoki-draw-transparent.png",
+            "https://totocambodialive.com/assets/img/logo.png",
+            "https://cdn.areabermain.club/assets/cdn/az4/2024/08/11/20240811/f07d4e2a6517ef1cea9e2a897e4abb98/nz-bullseye.png",
+            "https://cdn.areabermain.club/assets/cdn/az5/2026/05/31/20260531/615411e7875c891e4303d9951be44d9e/6ac2617c-cce0-4a58-8123-ef75008f07b4.png",
+            "https://sydneylotto.direct/assets/image/logo_sydney.png",
+            "https://cdn.areabermain.club/assets/cdn/az4/2024/08/11/20240811/a5fafa0102d98ab3959ceb9bb1045729/kl-logo.png",
+            "https://edit.nylottery.ny.gov/sites/default/files/logo-2179655b4229a219a9305b3f0e734bd0.png",
+            "https://cdn.areabermain.club/assets/cdn/az5/2026/06/05/20260605/4fdf2d2c5feae51d54ac7f4290981a54/logo-toto-mali-transparan-crop.png",
+            "https://cdn.areabermain.club/assets/cdn/az5/2026/06/05/20260605/d1ce46106aa404964eb43219807e4d26/nevada-logo-transparent.png",
+            "https://cdn.areabermain.club/assets/cdn/az5/2026/05/31/20260531/58db884cc74a151771e571f544bf328b/d01bb44b-95cf-4f55-8619-de5651cb239f.png",
+            "https://cdn.areabermain.club/assets/cdn/az5/2026/06/05/20260605/258664f0edbb982bf59f087bec64946b/huahin.png",
+            "https://cdn.areabermain.club/assets/cdn/az4/2024/08/11/20240811/8889f1c5fc738b5148145100c08a0ebc/439-4390693-magnum-pengeluaran-magnum-4d-hari-clipart-removebg-preview.png",
+            "https://cdn.areabermain.club/assets/cdn/az4/2024/08/11/20240811/81ec15c616becd5dafbb18ae7ba01828/logo-ol-black-horiz.png",
+            "https://cdn.areabermain.club/assets/cdn/az5/2026/06/05/20260605/b547bfdfc862f7fa4607e4fb14c5b39f/nc-education-lottery-transparent.png",
+            "https://cdn.areabermain.club/assets/cdn/az5/2025/05/25/20250525/360c63c3cfb89ed58bccd20bfd66e1fd/hongkong-lotto-1.png",
+            "https://cdn.areabermain.club/assets/cdn/az4/2024/08/11/20240811/32b1d9cb48d2c0a9f1c7e77853565fa1/pcso.png",
+            "https://cdn.areabermain.club/assets/cdn/az4/2024/08/11/20240811/a3e564ccb04c2b751ad4fa88c06e39c1/1-removebg-preview.png"
+        ];
+
+        const daftarShio = ["KUDA", "ULAR", "NAGA", "KELINCI", "HARIMAU", "KERBAU", "TIKUS", "BABI", "ANJING", "AYAM", "MONYET", "KAMBING"];
+
+        const gambarShioUtamaMap = {
+            "KUDA": "https://files.catbox.moe/86uf1h.png",
+            "ULAR": "https://files.catbox.moe/fq49h5.png",
+            "NAGA": "https://files.catbox.moe/b76mos.png",
+            "KELINCI": "https://files.catbox.moe/wtq7hh.png",
+            "HARIMAU": "https://files.catbox.moe/hw2m6r.png",
+            "KERBAU": "https://files.catbox.moe/kplvmw.png",
+            "TIKUS": "https://files.catbox.moe/419b5c.png",
+            "BABI": "https://files.catbox.moe/12lhgr.png",
+            "ANJING": "https://files.catbox.moe/po2o6h.png",
+            "AYAM": "https://files.catbox.moe/y7113y.png",
+            "MONYET": "https://files.catbox.moe/2e9a0t.png",
+            "KAMBING": "https://files.catbox.moe/d5s0i7.png"
+        };
+
+        const gambarShioKecilMap = {
+            "KUDA": "https://files.catbox.moe/e65s8o.png",
+            "ULAR": "https://files.catbox.moe/sr29oe.png",
+            "NAGA": "https://files.catbox.moe/atmcsu.png",
+            "KELINCI": "https://files.catbox.moe/0zje7k.png",
+            "HARIMAU": "https://files.catbox.moe/i2jutr.png",
+            "KERBAU": "https://files.catbox.moe/fyqofn.png",
+            "TIKUS": "https://files.catbox.moe/daxi9b.png",
+            "BABI": "https://files.catbox.moe/fs835f.png",
+            "ANJING": "https://files.catbox.moe/zhjy5z.png",
+            "AYAM": "https://files.catbox.moe/vigwuj.png",
+            "MONYET": "https://files.catbox.moe/2lneog.png",
+            "KAMBING": "https://files.catbox.moe/dntjbw.png"
+        };
+
+        const daftarSyair = [
+            ["Permata berkilau di kedalaman", "Angka tersimpan di setiap kilau", "Selami dengan tekad yang dalam", "Kemenangan adalah permata mahal"],
+            ["Langkah berani di malam sunyi", "Mencari jejak petunjuk mistik", "Angka mistis kembali berbunyi", "Membawa hoki yang paling estetik"],
+            ["Naga perkasa terbang ke awan", "Membawa takdir di ujung cakar", "Janganlah ragu wahai kawan", "Angka mainmu siap berkibar"],
+            ["Cahaya fajar menyapa bumi", "Membuka tabir rahasia alam", "Keberuntungan hari ini bersemi", "Menepis mimpi di waktu malam"],
+            ["Bintang emas penunjuk arah", "Memandu jiwa yang penuh harap", "Hari ini takkan menyerah", "Rezeki datang secepat kilat"],
+            ["Angin berhembus dari utara", "Membawa kabar kemenangan tiba", "Siapkan hati pasanglah angka", "Jackpot besar menanti di sana"],
+            ["Lembah hijau menyimpan misteri", "Teka teki alam tertulis di batu", "Gunakan insting tajam sekali", "JP paus datang tepat waktu"],
+            ["Burung gagak hinggap di dahan", "Melihat angka di balik awan", "Keberuntungan bukan sekadar harapan", "Jika pilihan tepat dilakukan"],
+            ["Samudra luas ombak menderu", "Rahasia karang sulit ditebak", "Padukan angka lama dan baru", "Keberuntunganmu takkan terelak"],
+            ["Gunung tinggi puncaknya salju", "Dingin mencekam rahasia disimpan", "Luruskan niat satu tujuan", "Angka jitu jadi sandaran"],
+            ["Harimau loreng mengaum keras", "Menjaga angka di dalam rimba", "Hati tenang janganlah cemas", "Hadiah besar segera tiba"],
+            ["Rembulan bersinar sangat terang", "Menerangi jalan para pejuang", "Malam ini saatnya menang", "Bawa pulang semua peluang"],
+            ["Kitab kuno terbuka sudah", "Tulisan emas angka rahasia", "Nasib buruk segera berubah", "Menjadi untung sepanjang masa"],
+            ["Awan hitam perlahan sirna", "Pelangi indah mulai terlihat", "Angka mainmu punya makna", "Membawa rezeki berlipat lipat"],
+            ["Lonceng berdentang di tengah kota", "Menandai waktu hoki dimulai", "Jangan sia-siakan kesempatan kita", "Pundi-pundi emas segera terisi"],
+            ["Kuda berlari kencang sekali", "Mengejar bayang di padang luas", "Angka keberuntungan sudah menanti", "Membuat hati merasa puas"],
+            ["Embun pagi sejukkan jiwa", "Membawa berkat di hari baru", "Percaya diri jangan kecewa", "Nomor pilihanmu sungguh jitu"],
+            ["Jejak kaki di pasir pantai", "Terhapus ombak datang menyapu", "Gunakan strategi janganlah santai", "Kemenangan mutlak jadi milikmu"],
+            ["Pohon beringin akarnya kuat", "Tempat bernaung angka mistis", "Racikan jitu sudah dibuat", "Hasil akhirnya sangat optimis"],
+            ["Kilauan intan di kotak kayu", "Warisan tua sang kakek sakti", "Pilih angka janganlah ragu", "Saldo bertambah setiap hari"],
+            ["Gerbang emas terbuka lebar", "Menyambut jiwa yang penuh hoki", "Berita kemenangan mulai tersebar", "LA LATOTO tempat berbagi"]
+        ];
+
+        const daftarBGs = [
+            "https://files.catbox.moe/euifpj.png",
+            "https://files.catbox.moe/tyzw2x.png",
+            "https://files.catbox.moe/g8ucy4.png",
+            "https://files.catbox.moe/hgzifx.png",
+            "https://files.catbox.moe/n59laj.png"
+        ];
+
+        function updateTanggalOtomatis() {
+            const bulanIndo = ["JANUARI", "FEBRUARI", "MARET", "APRIL", "MEI", "JUNI", "JULI", "AGUSTUS", "SEPTEMBER", "OKTOBER", "NOVEMBER", "DESEMBER"];
+            const hariIni = new Date();
+            document.getElementById('live-date').innerText = `${String(hariIni.getDate()).padStart(2, '0')} ${bulanIndo[hariIni.getMonth()]} ${hariIni.getFullYear()}`;
+        }
+
+        function acakBackground() {
+            const bgAcak = daftarBGs[Math.floor(Math.random() * daftarBGs.length)];
+            const card = document.getElementById('main-card');
+            card.style.backgroundImage = `linear-gradient(rgba(10, 8, 3, 0.301), rgba(0, 0, 0, 0.0)), url("${bgAcak}")`;
+        }
+
+        function acakAngka() {
+            const logoAcak = daftarLogos[Math.floor(Math.random() * daftarLogos.length)];
+            document.getElementById('pasaran-img').src = logoAcak;
+            document.getElementById('num-top').innerText = Math.floor(Math.random() * 10);
+            document.getElementById('num-left').innerText = Math.floor(Math.random() * 10);
+            document.getElementById('num-right').innerText = Math.floor(Math.random() * 10);
+            document.getElementById('num-bottom').innerText = Math.floor(Math.random() * 10);
+            document.getElementById('shio-num').innerText = Math.floor(Math.random() * 90) + 10;
+            const shioAcak = daftarShio[Math.floor(Math.random() * daftarShio.length)];
+            document.getElementById('shio-text').innerText = `SHIO ${shioAcak}`;
+            document.getElementById('shio-logo-main').src = gambarShioUtamaMap[shioAcak];
+            document.getElementById('shio-head-small').src = gambarShioKecilMap[shioAcak];
+            let digitBBFS = [];
+            while(digitBBFS.length < 8) {
+                let r = Math.floor(Math.random() * 10);
+                if(!digitBBFS.includes(r)) digitBBFS.push(r);
+            }
+            document.getElementById('bbfs-num').innerText = digitBBFS.join('');
+            let digitMain = [...digitBBFS].sort(() => 0.5 - Math.random()).slice(0, 5);
+            document.getElementById('main-num').innerText = digitMain.join(' - ');
+            const syairTerpilih = daftarSyair[Math.floor(Math.random() * daftarSyair.length)];
+            document.getElementById('poem-container').innerHTML = syairTerpilih.map(baris => `<p class="poem">${baris}</p>`).join('');
+        }
+
+        window.onload = function() {
+            updateTanggalOtomatis();
+        };
+    </script>
+</body>
+</html>
