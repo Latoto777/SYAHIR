@@ -1,9 +1,9 @@
-T<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>𝐒𝐘𝐀𝐈𝐑 𝐋𝐀𝐓𝐎𝐓𝐎 ♛</title>
+    <title>LA LATOTO - Custom Edition</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght=600;700&family=Poppins:wght=300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
         /* Reset Dasar */
@@ -335,7 +335,8 @@ T<!DOCTYPE html>
         <div class="card-container" id="main-card">
             <header class="header">
                 <img src="https://files.catbox.moe/mnelfc.webp" alt="LATOTO Logo" class="logo-image">
-                <p class="date" id="live-date">09 JULI 2026</p>
+                <!-- ID live-date akan diisi otomatis oleh JS -->
+                <p class="date" id="live-date">MEMUAT TANGGAL...</p>
                 <div class="pasaran-badge-container">
                     <img src="https://cdn.areabermain.club/assets/cdn/az4/2024/08/11/20240811/8889f1c5fc738b5148145100c08a0ebc/439-4390693-magnum-pengeluaran-magnum-4d-hari-clipart-removebg-preview.png" alt="Pasaran Logo" class="pasaran-logo" id="pasaran-img">
                 </div>
@@ -390,13 +391,13 @@ T<!DOCTYPE html>
         </div>
 
         <div class="button-group">
-            <button class="btn-acak" onclick="acakAngka()">𝐔𝐁𝐀𝐇 𝐒𝐘𝐀𝐈𝐑</button>
+            <button class="btn-acak" onclick="acakAngka()">𝐔𝐁𝐀𝐇 𝐒𝐘𝐀𝐇𝐈𝐑</button>
             <button class="btn-acak" onclick="acakBackground()">𝐔𝐁𝐀𝐇 𝐁𝐈𝐍𝐆𝐊𝐀𝐈</button>
         </div>
     </div>
 
     <script>
-        // SCRIPT TETAP SAMA TANPA PERUBAHAN
+        // DATA TETAP SAMA SEPERTI ASLINYA
         const daftarLogos = [
             "https://cdn.areabermain.club/assets/cdn/az5/2026/06/05/20260605/9ca8d985ec072becd1750837393f00bf/bangkok.png",
             "https://cdn.areabermain.club/assets/cdn/az5/2026/06/05/20260605/00298fb352544dedc3291605bd0b07c1/brunei.png",
@@ -426,33 +427,21 @@ T<!DOCTYPE html>
         const daftarShio = ["KUDA", "ULAR", "NAGA", "KELINCI", "HARIMAU", "KERBAU", "TIKUS", "BABI", "ANJING", "AYAM", "MONYET", "KAMBING"];
 
         const gambarShioUtamaMap = {
-            "KUDA": "https://files.catbox.moe/86uf1h.png",
-            "ULAR": "https://files.catbox.moe/fq49h5.png",
-            "NAGA": "https://files.catbox.moe/b76mos.png",
-            "KELINCI": "https://files.catbox.moe/wtq7hh.png",
-            "HARIMAU": "https://files.catbox.moe/hw2m6r.png",
-            "KERBAU": "https://files.catbox.moe/kplvmw.png",
-            "TIKUS": "https://files.catbox.moe/419b5c.png",
-            "BABI": "https://files.catbox.moe/12lhgr.png",
-            "ANJING": "https://files.catbox.moe/po2o6h.png",
-            "AYAM": "https://files.catbox.moe/y7113y.png",
-            "MONYET": "https://files.catbox.moe/2e9a0t.png",
-            "KAMBING": "https://files.catbox.moe/d5s0i7.png"
+            "KUDA": "https://files.catbox.moe/86uf1h.png", "ULAR": "https://files.catbox.moe/fq49h5.png",
+            "NAGA": "https://files.catbox.moe/b76mos.png", "KELINCI": "https://files.catbox.moe/wtq7hh.png",
+            "HARIMAU": "https://files.catbox.moe/hw2m6r.png", "KERBAU": "https://files.catbox.moe/kplvmw.png",
+            "TIKUS": "https://files.catbox.moe/419b5c.png", "BABI": "https://files.catbox.moe/12lhgr.png",
+            "ANJING": "https://files.catbox.moe/po2o6h.png", "AYAM": "https://files.catbox.moe/y7113y.png",
+            "MONYET": "https://files.catbox.moe/2e9a0t.png", "KAMBING": "https://files.catbox.moe/d5s0i7.png"
         };
 
         const gambarShioKecilMap = {
-            "KUDA": "https://files.catbox.moe/e65s8o.png",
-            "ULAR": "https://files.catbox.moe/sr29oe.png",
-            "NAGA": "https://files.catbox.moe/atmcsu.png",
-            "KELINCI": "https://files.catbox.moe/0zje7k.png",
-            "HARIMAU": "https://files.catbox.moe/i2jutr.png",
-            "KERBAU": "https://files.catbox.moe/fyqofn.png",
-            "TIKUS": "https://files.catbox.moe/daxi9b.png",
-            "BABI": "https://files.catbox.moe/fs835f.png",
-            "ANJING": "https://files.catbox.moe/zhjy5z.png",
-            "AYAM": "https://files.catbox.moe/vigwuj.png",
-            "MONYET": "https://files.catbox.moe/2lneog.png",
-            "KAMBING": "https://files.catbox.moe/dntjbw.png"
+            "KUDA": "https://files.catbox.moe/e65s8o.png", "ULAR": "https://files.catbox.moe/sr29oe.png",
+            "NAGA": "https://files.catbox.moe/atmcsu.png", "KELINCI": "https://files.catbox.moe/0zje7k.png",
+            "HARIMAU": "https://files.catbox.moe/i2jutr.png", "KERBAU": "https://files.catbox.moe/fyqofn.png",
+            "TIKUS": "https://files.catbox.moe/daxi9b.png", "BABI": "https://files.catbox.moe/fs835f.png",
+            "ANJING": "https://files.catbox.moe/zhjy5z.png", "AYAM": "https://files.catbox.moe/vigwuj.png",
+            "MONYET": "https://files.catbox.moe/2lneog.png", "KAMBING": "https://files.catbox.moe/dntjbw.png"
         };
 
         const daftarSyair = [
@@ -480,17 +469,20 @@ T<!DOCTYPE html>
         ];
 
         const daftarBGs = [
-            "https://files.catbox.moe/euifpj.png",
-            "https://files.catbox.moe/tyzw2x.png",
-            "https://files.catbox.moe/g8ucy4.png",
-            "https://files.catbox.moe/hgzifx.png",
+            "https://files.catbox.moe/euifpj.png", "https://files.catbox.moe/tyzw2x.png",
+            "https://files.catbox.moe/g8ucy4.png", "https://files.catbox.moe/hgzifx.png",
             "https://files.catbox.moe/n59laj.png"
         ];
 
+        // FUNGSI TANGGAL OTOMATIS (REAL TIME)
         function updateTanggalOtomatis() {
             const bulanIndo = ["JANUARI", "FEBRUARI", "MARET", "APRIL", "MEI", "JUNI", "JULI", "AGUSTUS", "SEPTEMBER", "OKTOBER", "NOVEMBER", "DESEMBER"];
             const hariIni = new Date();
-            document.getElementById('live-date').innerText = `${String(hariIni.getDate()).padStart(2, '0')} ${bulanIndo[hariIni.getMonth()]} ${hariIni.getFullYear()}`;
+            const tgl = String(hariIni.getDate()).padStart(2, '0');
+            const bln = bulanIndo[hariIni.getMonth()];
+            const thn = hariIni.getFullYear();
+            
+            document.getElementById('live-date').innerText = `${tgl} ${bln} ${thn}`;
         }
 
         function acakBackground() {
@@ -523,6 +515,7 @@ T<!DOCTYPE html>
             document.getElementById('poem-container').innerHTML = syairTerpilih.map(baris => `<p class="poem">${baris}</p>`).join('');
         }
 
+        // Menjalankan fungsi saat halaman dibuka
         window.onload = function() {
             updateTanggalOtomatis();
         };
